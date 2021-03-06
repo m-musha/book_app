@@ -1,3 +1,6 @@
+<%= flash[:notice] %>
+<%= flash[:alert] %>
+
 <h1>Books</h1>
 <table>
 <thead>
@@ -29,14 +32,6 @@
 </table>
 
 <h2>New Book</h2>
-<%= form_with model: @book, local:true do |f| %>
-  <p>Title</p>
-  <%= f.text_field :title %>
-  <p>Body</p>
-  <%= f.text_area :body %>
-  <br><%= f.submit 'Create Book' %></br>
-<% end %>
-
 <% if @book.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
@@ -46,4 +41,11 @@
         <% end %>
       </ul>
     </div>
+<% end %>
+<%= form_with model: @book, local:true do |f| %>
+  <p>Title</p>
+  <%= f.text_field :title %>
+  <p>Body</p>
+  <%= f.text_area :body %>
+  <br><%= f.submit 'Create Book' %></br>
 <% end %>
